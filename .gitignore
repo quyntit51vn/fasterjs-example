@@ -1,0 +1,10 @@
+#env
+.env*
+!.env.example
+
+#config
+src/configs/local.ts
+
+node_modules
+
+api-doc.json

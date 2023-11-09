@@ -1,0 +1,37 @@
+Table Roles {
+	id string(30) [pk, not null ] 
+	name string [not null] 
+	createdAt number  
+	updatedAt number  
+}
+
+Table Permissions {
+	id string(30) [pk, not null ] 
+	name string  
+	api string  
+	method string  
+	createdAt number  
+	updatedAt number  
+}
+
+Table RoleHasPermissions {
+	id string(30) [pk, not null ] 
+	roleId string  
+	permissionId string  
+	updatedAt number  
+	createdAt number  
+}
+
+Table Users {
+	id string(30) [pk, not null ] 
+	name string [not null] 
+	email string [not null, unique] 
+	password string [not null] 
+	roleId string [not null] 
+	updatedAt number  
+	createdAt number  
+}
+
+Ref: RoleHasPermissions.permissionId > Permissions.id
+Ref: RoleHasPermissions.roleId > Roles.id
+Ref: Users.roleId > Roles.id
